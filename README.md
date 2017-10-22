@@ -1,4 +1,5 @@
-# hockey-project
+# easy-team-site
+Devoted to implementing an open source solution to launching and maintaining beer league team websites 
 
 > A Vue.js project
 
