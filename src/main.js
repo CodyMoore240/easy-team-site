@@ -7,6 +7,9 @@ import firebase from 'firebase'
 
 Vue.config.productionTip = false
 
+// define a default app var
+let app
+
 // setup Firebase
 let config = {
   apiKey: 'AIzaSyC__DxahXFEl6xGjQSR_QjLuKlnNCiC8FU',
@@ -20,10 +23,16 @@ let config = {
 // initialize firebase app wide
 firebase.initializeApp(config)
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+// make sure the firebase Auth Object is ready to use
+firebase.auth().onAuthStateChanged(function (user) {
+  // check if app has a value
+  if (!app) {
+    /* eslint-disable no-new */
+    app = new Vue({
+      el: '#app',
+      router,
+      template: '<App/>',
+      components: { App }
+    })
+  }
 })
