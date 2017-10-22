@@ -8,6 +8,7 @@
       <label for='number'>Number</label>
       <input type='text' id='number' name='number' v-on:blur='updateAttribute' v-model='player.number'>
     </div>
+    <button v-on:click='deletePlayer'>Delete Player</button>
   </div>
 </template>
 
@@ -26,6 +27,13 @@ export default {
       })
       .catch(function (error) {
         console.error('Error writing document: ', error)
+      })
+    },
+    deletePlayer: function (e) {
+      firebase.firestore().collection('players').doc(this.player.id).delete().then(function () {
+        console.log('Document successfully deleted!')
+      }).catch(function (error) {
+        console.error('Error removing document: ', error)
       })
     }
   }
