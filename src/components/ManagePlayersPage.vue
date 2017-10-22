@@ -4,6 +4,7 @@
     <div v-for='player in players'>
       <PlayerDetail :player="player"></PlayerDetail>
     </div>
+    <AddPlayer></AddPlayer>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import 'firebase/firestore'
 
 // import components
 import PlayerDetail from '@/components/ManagePlayerDetail'
+import AddPlayer from '@/components/ManagePlayerAdd'
 
 export default {
   data () {
@@ -33,7 +35,8 @@ export default {
     })
   },
   components: {
-    PlayerDetail
+    PlayerDetail,
+    AddPlayer
   }
 }
 </script>
