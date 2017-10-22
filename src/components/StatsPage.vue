@@ -1,7 +1,7 @@
-<template lang="html">
-  <div class="">
+<template lang='html'>
+  <div class=''>
     <div>{{ message }}</div>
-    <div v-for="stat in stats">
+    <div v-for='stat in stats'>
       {{stat}}
     </div>
   </div>
@@ -9,6 +9,7 @@
 
 <script>
 import firebase from 'firebase'
+import 'firebase/firestore'
 
 export default {
   data () {
@@ -17,18 +18,15 @@ export default {
       stats: null
     }
   },
-  mounted () {
-    // create a listener that updates vue whenever firebase changes
-    firebase.database().ref('stats').on('value', snapshot => {
-      this.stats = snapshot.val()
+  beforeMount () {
+    firebase.firestore().collection('stats').doc('4zPjHAPdY0dVTKDvOT2T')
+    .onSnapshot((doc) => {
+      this.stats = doc.data()
+      console.log(doc.data())
     })
-  },
-  beforeDestroy () {
-    // remove the firebase listener
-    firebase.database().ref('stats').off()
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 </style>
