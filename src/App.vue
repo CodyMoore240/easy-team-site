@@ -6,21 +6,7 @@
 </template>
 
 <script>
-import firebase from 'firebase'
 import SiteHeader from '@/components/SiteHeader'
-
-// setup Firebase
-let config = {
-  apiKey: 'AIzaSyC__DxahXFEl6xGjQSR_QjLuKlnNCiC8FU',
-  authDomain: 'rubberpuckies-60b7f.firebaseapp.com',
-  databaseURL: 'https://rubberpuckies-60b7f.firebaseio.com',
-  projectId: 'rubberpuckies-60b7f',
-  storageBucket: 'rubberpuckies-60b7f.appspot.com',
-  messagingSenderId: '336525381351'
-}
-
-// initialize firebase app wide
-firebase.initializeApp(config)
 
 export default {
   name: 'app',
